@@ -1,0 +1,415 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Make long/underscored URLs click + break safely
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{breaklinks=true}
+
+% Simple, larger clickable text+icon links
+\newcommand{\extlink}[2]{\href{#1}{\textcolor{darkblue}{#2}}}
+
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{AMAN SINGH}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \href{mailto:amansingh211116@gmail.com}{amansingh211116@gmail.com} | 
+    \href{https://beyondbooks2116.netlify.app/}{beyondbooks2116.netlify.app/}
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/aman-singh-7a5976296/}{LinkedIn/amansingh} | 
+    \socialicon{\faGithub} \href{https://github.com/amansingh2116}{amansingh2116} | 
+    }
+\end{center}
+\vspace{-6mm}
+\begin{center}
+    \small{New Delhi, India}
+\end{center}
+
+\vspace{-4mm}
+
+\section{\textbf{Objective}}
+\vspace{1mm}
+\small{
+Seeking a position in data science, quantitative finance, or software engineering to leverage my expertise in statistical analysis, machine learning, and full-stack application development. Aiming to contribute to innovative projects at the intersection of data science and real-world problem-solving, spanning algorithmic trading, fintech product development, and computer vision.
+}
+\vspace{-2mm}
+
+\section{\textbf{Experience}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {{WorldQuant [\href{https://www.worldquant.com}{\faIcon{globe}}]}}{India}
+      {Research Consultant}{Dec 2023 - Present}
+      \resumeItemListStart
+        \item Achieved Gold level in the WorldQuant Challenge, demonstrating strong analytical and research skills
+        \item Conducted research in algorithmic trading and alpha generation
+      \resumeItemListEnd 
+  \resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Indian Statistical Institute}{Kolkata, India}
+{Bachelor's Degree in Statistics (Hons.)}{Jul 2024 - Aug 2027}
+\resumeItemListStart
+\item Currently pursuing with a focus on statistical analysis, data science, and mathematics
+\item Relevant coursework: Stochastic Processes, Differential Equations, Statistical Inference, Discrete Mathematics \& Graph Theory, Quantitative Finance
+\item CGPA: 7.5
+\resumeItemListEnd
+
+% Placeholder for pre-university and high school education (not provided in CVs)
+\resumeSubheading
+{School of Excellence, Dwarka Sec-22}{New Delhi, India}
+{Higher Secondary Education}{2022}
+\resumeItemListStart
+\item Score: 94.2\%
+\resumeItemListEnd
+
+\resumeSubheading
+{Govt. Co. Ed. Sec. School, Rajapur Khurd}{New Delhi, India}
+{Secondary Education}{2020}
+\resumeItemListStart
+\item Score: 94.8\%
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {MF Analysis -- Indian Mutual Fund Research Platform}
+  {Tools: Python, Django, Data Pipelines, Render}
+  {2025 - Present}
+  {{}[\href{https://github.com/amansingh2116/MutualFundAnalysis}{\textcolor{darkblue}{\faGithub}}]
+  [\href{https://mutualfundanalysis.onrender.com/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Built and deployed a full-stack research platform covering 2,300+ Direct Growth/ETF mutual fund schemes across 50 AMCs, with live NAV and benchmark tracking, category-return meters, and quartile rankings
+  \item Developed a fund screener, a CAS/broker-statement portfolio tracker (XIRR, overlap, allocation), a goal-based recommendation engine, SIP/SWP/tax calculators, and a historical asset-allocation backtester
+  \item Applied the platform's own analytics to a full rebalancing review of a real family investment portfolio, producing a nine-step implementation plan and a simplified SIP structure
+  \item Hardened the application for security and free-tier resilience ahead of public launch
+\resumeItemListEnd
+
+\resumeProject
+  {StockResearch Pro -- Global Equity Research Platform}
+  {Tools: Python, Yahoo Finance API, NSE/BSE Data, Render}
+  {2025 - Present}
+  {{}[\href{https://github.com/amansingh2116/stock_research_report}{\textcolor{darkblue}{\faGithub}}]
+  [\href{https://stock-research-report.onrender.com/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Built a free equity research web app covering NSE/BSE and US equities with DCF valuation, DuPont analysis, WACC/FCFF, and ratio screening computed directly from raw financial statements
+  \item Implemented quantitative risk analytics -- VaR, CVaR, Altman Z-Score, Monte Carlo simulation, and rolling volatility -- alongside a 2-4 stock side-by-side comparison tool with Excel/PDF export
+  \item Generated downloadable 30-section PDF equity research reports structured like institutional broker notes
+\resumeItemListEnd
+
+\resumeProject
+  {Decoding the Indian IPO Market -- Quantitative Research \& ML Study}
+  {Tools: Python, Selenium, scikit-learn, pandas}
+  {2026}
+  {{}[\href{https://beyondbooks2116.netlify.app/ipo/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Built an end-to-end pipeline scraping and enriching 1,000+ Indian IPOs (1999-2026) across mainboard, SME, and GMP datasets using Selenium, the InvestorGain API, and Yahoo Finance
+  \item Ran hypothesis tests (t-tests, Mann-Whitney U, Kruskal-Wallis, Spearman correlation) showing Grey Market Premium (R\textsuperscript{2}=0.70) and oversubscription are the strongest predictors of listing-day gains
+  \item Trained a chronologically-validated Random Forest classifier (86\% accuracy, 0.86 ROC-AUC) that lifted model-selected IPO win rate from 55\% to 94\% out of sample
+\resumeItemListEnd
+
+\resumeProject
+  {Market Factor Analysis}
+  {Tools: Python, PCA, Factor Analysis, NumPy/Pandas}
+  {2026}
+  {{}[\href{https://github.com/amansingh2116/market-factor-analysis}{\textcolor{darkblue}{\faGithub}}]}
+\resumeItemListStart
+  \item Applied Principal Component Analysis (PCA) and factor analysis to identify latent statistical factors driving stock market returns
+  \item Benchmarked findings against established asset-pricing research papers alongside a coursework-based implementation
+\resumeItemListEnd
+
+\resumeProject
+  {Enhanced AI Research Assistant}
+  {Tools: Python, Gemini-API}
+  {Apr 2025}
+  {{}[\href{https://www.kaggle.com/code/amansingh2116/research-assistant}{\textcolor{darkblue}{\faGithub}}]}
+\resumeItemListStart
+  \item Built a generative AI–powered tool that automates research by integrating web search, content extraction, summarization, and structured report generation
+  \item Applied Retrieval Augmented Generation (RAG), embeddings for semantic search, and document understanding to deliver polished, relevant outputs within minutes
+\resumeItemListEnd
+
+\resumeProject
+  {IMC Prosperity -- Algorithmic Trading Competition}
+  {Tools: Python, Kalman Filters, Portfolio Optimization}
+  {2025}
+  {{}}
+\resumeItemListStart
+  \item Designed mean-reversion trading strategies using Kalman filters for the Round 1 tradable products in IMC's global algorithmic trading competition
+  \item Built a manual-trading portfolio optimization model for Round 5, balancing expected value against risk across a multi-asset trade book
+\resumeItemListEnd
+
+\resumeProject
+  {Open Source Contribution -- piQture (Quantum Machine Learning Library)}
+  {Tools: Python, pytest, Git}
+  {Merged Jan 2025}
+  {{}[\href{https://github.com/SaashaJoshi/piQture/pull/147}{\textcolor{darkblue}{\faGithub}}]}
+\resumeItemListStart
+  \item Contributed a merged pull request to piQture, a 60+ star quantum machine learning library for image processing, resolving an open validation issue in its QCNN module
+  \item Added validation and error handling to the QCNN class's \texttt{sequence} method, ensuring layer operations are valid \texttt{BaseLayer} subclasses with correctly typed parameters
+  \item Wrote parameterized unit tests with dynamic regex-based error matching, iterating through multiple maintainer review rounds before merge
+\resumeItemListEnd
+
+\resumeProject
+  {Hindi Script Refinement \& Improved OCR}
+  {Tools: Python, OpenCV, K-nearest neighbors (KNN) algorithm}
+  {Mar 2024 - May 2024}
+  {{}[\href{https://github.com/amansingh2116/hindi_ocr_revised}{\textcolor{darkblue}{\faGithub}}]}
+\resumeItemListStart
+  \item Developed a new set of 60 characters optimized for Hindi script to enhance OCR efficiency
+  \item Implemented the K-nearest neighbors (KNN) classification algorithm for character recognition
+  \item Trained the model on a dataset of handwritten characters, improving accuracy for Hindi text recognition
+\resumeItemListEnd
+
+\resumeProject
+  {Chroma-Keying}
+  {Tools: Python, OpenCV}
+  {Oct 2023 - Dec 2023}
+  {{}[\href{https://github.com/amansingh2116/chroma_keying}{\textcolor{darkblue}{\faGithub}}] [\href{https://amansingh2116.shinyapps.io/akmc/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Developed an innovative chroma keying technique for filmmaking, photography, and video production
+  \item Integrated strengths of multiple methods and introduced a new Grey Bound element
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{My Blog}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Beyond Books – Personal Blog}
+  {Topics: AI, Machine Learning, Data Science, Quantitative Finance, Open Source}
+  {Ongoing}
+  {[\href{https://beyondbooks2116.netlify.app/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Share insights on data science and quant-finance projects, along with practical guides for ISI entrance and open-source contributions
+  \item Blend technical writing with personal experience to help students and professionals navigate learning, research, and career growth
+  \item Selected posts:
+    \begin{itemize}[leftmargin=4mm,itemsep=0.3mm]
+      \item \href{https://beyondbooks2116.netlify.app/ipo/}{\textcolor{darkblue}{\textit{Decoding the Indian IPO Market}}}
+      \item \href{https://beyondbooks2116.netlify.app/tech-feat.-ai/}{\textcolor{darkblue}{\textit{AI and Us: How Artificial Intelligence Is Reshaping Work, Learning, Creativity, and Society}}}
+      \item \href{https://beyondbooks2116.netlify.app/ai_research/}{\textcolor{darkblue}{\textit{Enhanced Research Assistant: AI-Powered Comprehensive Research Tool}}}
+      \item \href{https://beyondbooks2116.netlify.app/ocr/}{\textcolor{darkblue}{\textit{Hindi Script Refinement \& Improved OCR}}}
+      \item \href{https://beyondbooks2116.netlify.app/chroma-keying/}{\textcolor{darkblue}{\textit{The Art and Science of Chroma Keying: Unveiling the Magic Behind Green Screens}}}
+      \item \href{https://beyondbooks2116.netlify.app/blog/isi-guide/}{\textcolor{darkblue}{\textit{How to Prepare for ISI Entrance Exam \& My ISI Preparation}}}
+      \item \href{https://beyondbooks2116.netlify.app/gsoc-guide/}{\textcolor{darkblue}{\textit{Crack Google Summer of Code (GSoC)}}}
+    \end{itemize}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+\section{\textbf{Certifications}}
+\vspace{-0.2mm}
+\resumeSubHeadingListStart
+\resumePOR{}{
+\textbf{} {{\href{https://www.worldquant.com/brain/}{Gold Level in the WorldQuant Challenge}}}}{Sep 2023}
+\resumePOR{}{
+\textbf{} {{\href{https://www.credly.com/badges/15dd7b00-4436-4ad1-bdbc-8373f06027a1/linked_in_profile}{Completed the WQU Applied Data Science Lab}}}}{Aug 2024}
+\resumePOR{}{
+\textbf{} {{\href{https://www.kaggle.com/certification/badges/amansingh2116/96}{Completed the 5-Day Gen AI Intensive Course by Google and Kaggle}}}}{Apr 2025}
+\resumePOR{}{
+\textbf{} {{\href{www.udacity.com/certificate/e/da902734-467e-11f0-bdec-97232caecce9}{Completed Udacity Introducing Generative AI with AWS}}}}{Jun 2025}
+\resumePOR{}{
+\textbf{} {{\href{www.udacity.com/certificate/e/78919620-8144-11f0-938f-23f17cb11d0a}{Completed the Udacity AWS AI Scientist Nanodegree}}}}{Oct 2025}
+\resumePOR{}{
+\textbf{} {{Summer of Quant by IIT KGP Quant Club}}}{July 2026}
+\resumePOR{}{
+\textbf{} {{Financial Analysis --- Tutedude}}}{Aug 2026}
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Skills}}
+\vspace{-0.4mm}
+ \resumeHeadingSkillStart
+  \resumeSubItem{Programming \& Web:}
+    {Python, R, Django, REST APIs, SQL, Web Scraping (Selenium), Cloud Deployment (Render)}
+  \resumeSubItem{Data Science \& Machine Learning:}
+    {Machine Learning (Classification, Regression, Random Forest, Gradient Boosting), Time-Series Analysis, Alpha Generation, Algorithmic Trading, Computer Vision (Chroma-Keying, OCR)}
+  \resumeSubItem{Quantitative Finance:}
+    {Portfolio Optimization, DCF \& Ratio Valuation, Risk Analytics (VaR, CVaR, Monte Carlo), Backtesting, Stochastic Calculus, Option Greeks}
+  \resumeSubItem{Mathematical \& Statistical Skills:}
+    {Statistical Analysis, Hypothesis Testing, Stochastic Processes, Mathematics}
+  \resumeSubItem{Research Skills:}
+    {Data Analysis, Problem-Solving, Research Implementation, Technical \& Content Writing, \LaTeX}
+ \resumeHeadingSkillEnd
+\end{document}
